@@ -6,6 +6,7 @@ gem "kitchen-docker"
 gem "kitchen-inspec"
 gem "kitchen-vagrant"
 gem "kitchen-sync"
-gem 'winrm'
-gem 'winrm-fs'
-gem 'vagrant-winrm'
+gem "inspec", "3.9"
+gem "winrm"
+gem "winrm-fs"
+gem "vagrant-winrm"
