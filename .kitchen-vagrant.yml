@@ -1,0 +1,95 @@
+---
+# we use docker as plateform
+driver:
+  name: vagrant
+
+# Ansible will be our provisioner
+provisioner:
+  name: ansible_playbook
+  hosts: localhost
+  require_chef_for_busser: false
+  require_ruby_for_busser: false
+  require_ansible_omnibus: false
+  idempotency_test: true
+
+# We use Inspec as testing framework
+verifier:
+  name: inspec
+  inspec_tests:
+    - path: tests/inspec
+
+# Build platforms
+platforms:
+  # Standard Linux
+  - name: centos-7
+  - name: centos-6
+  - name: fedora-28
+  - name: fedora-27
+  - name: fedora-26
+  - name: ubuntu-18.04
+  - name: ubuntu-17.10
+  - name: ubuntu-16.04
+  - name: ubuntu-14.04
+  - name: ubuntu-12.04
+  - name: debian-9
+  - name: debian-8
+  - name: debian-7
+  - name: oraclelinux-7
+    driver:
+      box: bento/oracle-7
+  - name: oraclelinux-6
+    driver:
+      box: bento/oracle-6
+
+  # Archlinux
+  - name: opensuse-42.1
+    driver:
+      box: opensuse/openSUSE-42.1-x86_64
+      provision: true
+
+  # Archlinux
+  - name: archlinux-rolling
+    driver:
+      box: archlinux/archlinux
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_archlinux_target.rb
+
+  # Gentoo
+  - name: gentoo
+    driver:
+      box: generic/gentoo
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_gentoo_target.rb
+
+  # Mac osx
+  - name: macosx-10.12
+    driver:
+      box: jhcook/macos-sierra
+      provision: true
+    provisioner:
+      name: ansible_playbook
+      ansible_binary_path: /usr/local/bin/
+
+  - name: macosx-10.11
+    driver:
+      box: jhcook/osx-elcapitan-10.11
+      provision: true
+    provisioner:
+      name: ansible_playbook
+      ansible_binary_path: /usr/local/bin/
+  - name: macosx-10.10
+    driver:
+      box: jhcook/osx-yosemite-10.10
+      provision: true
+    provisioner:
+      name: ansible_playbook
+      ansible_binary_path: /usr/local/bin/
+
+suites:
+  # Test terraform-latest
+  - name: terraform-latest
+    provisioner:
+      name: ansible_playbook
+      playbook: tests/playbooks/terraform-latest.yml
