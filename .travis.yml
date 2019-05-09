@@ -1,4 +1,5 @@
 ---
+dist: xenial
 services:
   - docker
 
@@ -20,6 +21,18 @@ env:
 # Fedora
 #
 #--------------------------------
+  - distribution: fedora
+    version: "31"
+    playbook: terraform-latest
+  - distribution: fedora
+    version: "30"
+    playbook: terraform-latest
+  - distribution: fedora
+    version: "29"
+    playbook: terraform-latest
+  - distribution: fedora
+    version: "28"
+    playbook: terraform-latest
   - distribution: fedora
     version: "27"
     playbook: terraform-latest

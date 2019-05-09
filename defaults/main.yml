@@ -1,2 +1,7 @@
 ---
 # defaults file for ansible-role-terraform
+
+# Define terraform version to install
+# Possible values: https://releases.hashicorp.com/terraform/index.json
+# Default: latest
+terraform_version: latest

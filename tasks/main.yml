@@ -1,2 +1,8 @@
 ---
 # tasks file for ansible-role-terraform
+
+- name: Include OS specific variables.
+  include_vars: "{{ ansible_system }}.yml"
+
+- name: Install Terraform
+  include_tasks: "setup-{{ ansible_system }}.yml"
