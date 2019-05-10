@@ -124,6 +124,15 @@ env:
     version: "rolling"
     playbook: terraform-latest
 
+#--------------------------------
+#
+# Gentoo
+#
+#--------------------------------
+  - distribution: gentoo
+    version: "stage3"
+    playbook: terraform-latest
+
 before_install:
   # Build docker container
   - 'sudo docker pull diodonfrost/${distribution}-${version}-ansible:latest'
