@@ -1,0 +1,45 @@
+---
+# tasks file for install terraform on Windows system
+
+- name: Find all terraform version for Windows
+  win_uri:
+    url: https://releases.hashicorp.com/terraform/index.json
+    return_content: yes
+  register: terraform_index
+
+- name: Find latest terraform version when latest var is define
+  set_fact:
+    terraform_version: "{{ item }}"
+  with_items: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+  when: terraform_version == 'latest'
+
+- name: check if terraform is present on Windows with the right version
+  win_shell: terraform --version
+  register: terraform_installed_version
+  ignore_errors: yes
+  changed_when: false
+  failed_when: false
+
+- name: Download terraform on Windows
+  win_get_url:
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_windows_amd64.zip
+    dest: C:\tmp\terraform_{{ terraform_version }}_windows_amd64.zip
+  when:
+    - terraform_version not in terraform_installed_version.stdout
+
+- name: Create terraform folder on Windows
+  win_file:
+    path: "{{ terraform_path }}"
+    state: directory
+
+- name: Install terraform on Windows
+  win_unzip:
+    src: C:\tmp\terraform_{{ terraform_version }}_windows_amd64.zip
+    dest: "{{ terraform_path }}"
+    creates: "{{ terraform_path }}terraform.exe"
+  when:
+    - terraform_version not in terraform_installed_version.stdout
+
+- name: Add terraform to Windows PATH
+  win_path:
+    elements: "{{ terraform_path }}"
