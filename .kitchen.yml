@@ -28,13 +28,6 @@ platforms:
       platform: centos
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-  - name: centos-6
-    driver:
-      image: diodonfrost/centos-6-ansible
-      platform: centos
-      run_command: /sbin/init
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
   # Fedora
   - name: fedora-27
@@ -88,10 +81,6 @@ platforms:
       image: diodonfrost/debian-8-ansible
       run_command: /sbin/init
       platform: debian
-  - name: debian-7
-    driver:
-      image: diodonfrost/debian-7-ansible
-      platform: debian
 
   # Oraclelinux
   - name: oraclelinux-7
@@ -102,11 +91,6 @@ platforms:
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
         - systemctl enable sshd
-  - name: oraclelinux-6
-    driver:
-      image: diodonfrost/oraclelinux-6-ansible
-      run_command: /sbin/init
-      platform: centos
 
   # Amazonlinux
   - name: amazonlinux-2
@@ -116,11 +100,6 @@ platforms:
       platform: centos
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-  - name: amazonlinux-1
-    driver:
-      image: diodonfrost/amazonlinux-1-ansible
-      run_command: /sbin/init
-      platform: centos
 
   # Opensuse
   - name: opensuse-15.1

@@ -12,9 +12,6 @@ env:
   - distribution: centos
     version: "7"
     playbook: terraform-latest
-  - distribution: centos
-    version: "6"
-    playbook: terraform-latest
 
 #--------------------------------
 #
@@ -57,9 +54,6 @@ env:
   - distribution: ubuntu
     version: "14.04"
     playbook: terraform-latest
-  - distribution: ubuntu
-    version: "12.04"
-    playbook: terraform-latest
 
 #--------------------------------
 #
@@ -72,9 +66,6 @@ env:
   - distribution: debian
     version: "8"
     playbook: terraform-latest
-  - distribution: debian
-    version: "7"
-    playbook: terraform-latest
 
 #--------------------------------
 #
@@ -84,9 +75,6 @@ env:
   - distribution: oraclelinux
     version: "7"
     playbook: terraform-latest
-  - distribution: oraclelinux
-    version: "6"
-    playbook: terraform-latest
 
 #--------------------------------
 #
@@ -95,9 +83,6 @@ env:
 #--------------------------------
   - distribution: amazonlinux
     version: "2"
-    playbook: terraform-latest
-  - distribution: amazonlinux
-    version: "1"
     playbook: terraform-latest
 
 #--------------------------------

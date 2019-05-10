@@ -22,7 +22,6 @@ verifier:
 platforms:
   # Standard Linux
   - name: centos-7
-  - name: centos-6
   - name: fedora-28
   - name: fedora-27
   - name: fedora-26
@@ -30,16 +29,11 @@ platforms:
   - name: ubuntu-17.10
   - name: ubuntu-16.04
   - name: ubuntu-14.04
-  - name: ubuntu-12.04
   - name: debian-9
   - name: debian-8
-  - name: debian-7
   - name: oraclelinux-7
     driver:
       box: bento/oracle-7
-  - name: oraclelinux-6
-    driver:
-      box: bento/oracle-6
 
   # Archlinux
   - name: opensuse-42.1
