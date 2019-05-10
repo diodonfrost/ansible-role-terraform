@@ -83,7 +83,7 @@ platforms:
       box: generic/openbsd6
       provision: true
       vagrantfiles:
-        - tests/vagrant/vagrant_openbsd_target.r
+        - tests/vagrant/vagrant_openbsd_target.rb
 
   # Mac osx
   - name: macosx-10.12
