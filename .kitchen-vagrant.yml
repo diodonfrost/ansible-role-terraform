@@ -57,6 +57,34 @@ platforms:
       vagrantfiles:
         - tests/vagrant/vagrant_gentoo_target.rb
 
+  # FreeBSD
+  - name: freebsd-11.2
+    driver:
+      box: bento/freebsd-11.2
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_freebsd_target.rb
+  - name: freebsd-10.4
+    driver:
+      box: bento/freebsd-10.4
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_freebsd_target.rb
+  - name: freebsd-10.3
+    driver:
+      box: bento/freebsd-10.3
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_freebsd_target.rb
+
+  # OpenBSD
+  - name: openbsd-6
+    driver:
+      box: generic/openbsd6
+      provision: true
+      vagrantfiles:
+        - tests/vagrant/vagrant_openbsd_target.r
+
   # Mac osx
   - name: macosx-10.12
     driver:
