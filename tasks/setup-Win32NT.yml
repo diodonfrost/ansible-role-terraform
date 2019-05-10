@@ -9,8 +9,7 @@
 
 - name: Find latest terraform version when latest var is define
   set_fact:
-    terraform_version: "{{ item }}"
-  with_items: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+    terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
 - name: check if terraform is present on Windows with the right version
