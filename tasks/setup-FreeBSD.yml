@@ -1,0 +1,27 @@
+---
+# tasks file for install terraform on FreeBSD system
+
+- name: Find all terraform version
+  uri:
+    url: https://releases.hashicorp.com/terraform/index.json
+    return_content: yes
+  register: terraform_index
+
+- name: Find latest terraform version when latest var is define
+  set_fact:
+    terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+  when: terraform_version == 'latest'
+
+- name: Check if terraform is present with the right version
+  shell: "{{ terraform_path }}/terraform --version"
+  register: terraform_installed_version
+  ignore_errors: yes
+  changed_when: false
+  failed_when: false
+
+- name: Install terraform on FreeBSD
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_freebsd_amd64.zip"
+    dest: "{{ terraform_path }}"
+    remote_src: yes
+  when: terraform_version not in terraform_installed_version.stdout
