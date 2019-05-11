@@ -13,15 +13,15 @@
   when: terraform_version == 'latest'
 
 - name: Check if terraform is present with the right version
-  shell: "{{ terraform_path }}/terraform --version"
+  command: "{{ terraform_path }}/terraform -version"
   register: terraform_installed_version
   ignore_errors: yes
   changed_when: false
   failed_when: false
 
-- name: Install terraform on openbsd
+- name: Install terraform on OpenBSD
   unarchive:
     src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_openbsd_amd64.zip"
     dest: "{{ terraform_path }}"
     remote_src: yes
-  when: terraform_version not in terraform_installed_version.stdout
+  when: terraform_version not in terraform_installed_version.stdout | default('')

@@ -65,5 +65,7 @@ galaxy_info:
     - system
     - packaging
     - cloud
+    - terraform
+    - hashicorp
 
 dependencies: []

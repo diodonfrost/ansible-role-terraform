@@ -9,6 +9,8 @@ This role provide a compliance for install terraform on your target host.
 
 This role was developed using Ansible 2.5 Backwards compatibility is not guaranteed.
 Use `ansible-galaxy install diodonfrost.terraform` to install the role on your system.
+*   Ansible >= 2.5
+*   Python >= 2.7
 
 Supported platforms:
 

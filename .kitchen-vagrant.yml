@@ -93,7 +93,6 @@ platforms:
     provisioner:
       name: ansible_playbook
       ansible_binary_path: /usr/local/bin/
-
   - name: macosx-10.11
     driver:
       box: jhcook/osx-elcapitan-10.11

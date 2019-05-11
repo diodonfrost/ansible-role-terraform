@@ -12,8 +12,8 @@
     terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
-- name: check if terraform is present with the right version
-  shell: "{{ terraform_path }}/terraform --version"
+- name: Check if terraform is present with the right version
+  command: "{{ terraform_path }}/terraform -version"
   register: terraform_installed_version
   ignore_errors: yes
   changed_when: false
@@ -24,5 +24,4 @@
     src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_darwin_amd64.zip"
     dest: "{{ terraform_path }}"
     remote_src: yes
-  when:
-    - terraform_version not in terraform_installed_version.stdout
+  when: terraform_version not in terraform_installed_version.stdout | default('')
