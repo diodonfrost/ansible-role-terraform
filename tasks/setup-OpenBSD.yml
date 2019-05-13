@@ -1,25 +1,26 @@
 ---
 # tasks file for install terraform on openbsd system
 
-- name: Find all terraform version
+- name: OpenBSD | Find all versions of Terraform
   uri:
     url: https://releases.hashicorp.com/terraform/index.json
     return_content: yes
   register: terraform_index
 
-- name: Find latest terraform version when latest var is define
+- name: OpenBSD | Finds the latest Terraform version when latest var is define
   set_fact:
     terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
-- name: Check if terraform is present with the right version
+# This task avoids downloading Terraform every time
+- name: OpenBSD | Check if Terraform is present with the right version
   command: "{{ terraform_path }}/terraform -version"
   register: terraform_installed_version
   ignore_errors: yes
   changed_when: false
   failed_when: false
 
-- name: Install terraform on OpenBSD
+- name: OpenBSD | Install Terraform
   unarchive:
     src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_openbsd_amd64.zip"
     dest: "{{ terraform_path }}"
