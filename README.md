@@ -20,6 +20,8 @@ Supported platforms:
     - 7
 - name: Fedora
   versions:
+    - 31
+    - 30
     - 29
     - 28
     - 27
@@ -118,9 +120,9 @@ This role can also install a specific version of terraform.
 - hosts: localhost
   become: true
   roles:
-    - { role: ansible-role-terraform,
-        terraform_version: 0.12.0-rc1
-      }
+    - role: ansible-role-terraform
+      vars:
+        - terraform_version: 0.12.0-rc1
 
 ```
 

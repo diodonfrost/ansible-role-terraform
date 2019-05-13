@@ -12,6 +12,9 @@ env:
   - distribution: centos
     version: "7"
     playbook: terraform-latest
+  - distribution: centos
+    version: "7"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -22,20 +25,38 @@ env:
     version: "31"
     playbook: terraform-latest
   - distribution: fedora
+    version: "31"
+    playbook: terraform-0.11.0
+  - distribution: fedora
     version: "30"
     playbook: terraform-latest
+  - distribution: fedora
+    version: "30"
+    playbook: terraform-0.11.0
   - distribution: fedora
     version: "29"
     playbook: terraform-latest
   - distribution: fedora
+    version: "29"
+    playbook: terraform-0.11.0
+  - distribution: fedora
     version: "28"
     playbook: terraform-latest
+  - distribution: fedora
+    version: "28"
+    playbook: terraform-0.11.0
   - distribution: fedora
     version: "27"
     playbook: terraform-latest
   - distribution: fedora
+    version: "27"
+    playbook: terraform-0.11.0
+  - distribution: fedora
     version: "26"
     playbook: terraform-latest
+  - distribution: fedora
+    version: "26"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -46,14 +67,26 @@ env:
     version: "19.04"
     playbook: terraform-latest
   - distribution: ubuntu
+    version: "19.04"
+    playbook: terraform-0.11.0
+  - distribution: ubuntu
     version: "18.04"
     playbook: terraform-latest
+  - distribution: ubuntu
+    version: "18.04"
+    playbook: terraform-0.11.0
   - distribution: ubuntu
     version: "16.04"
     playbook: terraform-latest
   - distribution: ubuntu
+    version: "16.04"
+    playbook: terraform-0.11.0
+  - distribution: ubuntu
     version: "14.04"
     playbook: terraform-latest
+  - distribution: ubuntu
+    version: "14.04"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -64,8 +97,14 @@ env:
     version: "9"
     playbook: terraform-latest
   - distribution: debian
+    version: "9"
+    playbook: terraform-0.11.0
+  - distribution: debian
     version: "8"
     playbook: terraform-latest
+  - distribution: debian
+    version: "8"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -75,6 +114,9 @@ env:
   - distribution: oraclelinux
     version: "7"
     playbook: terraform-latest
+  - distribution: oraclelinux
+    version: "7"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -84,6 +126,9 @@ env:
   - distribution: amazonlinux
     version: "2"
     playbook: terraform-latest
+  - distribution: amazonlinux
+    version: "2"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -94,17 +139,32 @@ env:
     version: "15.1"
     playbook: terraform-latest
   - distribution: opensuse
+    version: "15.1"
+    playbook: terraform-0.11.0
+  - distribution: opensuse
     version: "15"
     playbook: terraform-latest
+  - distribution: opensuse
+    version: "15"
+    playbook: terraform-0.11.0
   - distribution: opensuse
     version: "42.3"
     playbook: terraform-latest
   - distribution: opensuse
+    version: "42.3"
+    playbook: terraform-0.11.0
+  - distribution: opensuse
     version: "42.2"
     playbook: terraform-latest
   - distribution: opensuse
+    version: "42.2"
+    playbook: terraform-0.11.0
+  - distribution: opensuse
     version: "13.2"
     playbook: terraform-latest
+  - distribution: opensuse
+    version: "13.2"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -114,6 +174,9 @@ env:
   - distribution: archlinux
     version: "rolling"
     playbook: terraform-latest
+  - distribution: archlinux
+    version: "rolling"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -123,6 +186,9 @@ env:
   - distribution: alpine
     version: "rolling"
     playbook: terraform-latest
+  - distribution: alpine
+    version: "rolling"
+    playbook: terraform-0.11.0
 
 #--------------------------------
 #
@@ -132,6 +198,9 @@ env:
   - distribution: gentoo
     version: "stage3"
     playbook: terraform-latest
+  - distribution: gentoo
+    version: "stage3"
+    playbook: terraform-0.11.0
 
 before_install:
   # Build docker container
