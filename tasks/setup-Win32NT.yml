@@ -23,9 +23,8 @@
 - name: Windows | Download Terraform
   win_get_url:
     url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_windows_amd64.zip
-    dest: C:\tmp\terraform_{{ terraform_version }}_windows_amd64.zip
-  when:
-    - terraform_version not in terraform_installed_version.stdout
+    dest: '%TEMP%\terraform_{{ terraform_version }}_windows_amd64.zip'
+  when: terraform_version not in terraform_installed_version.stdout
 
 - name: Windows | Create Terraform folder
   win_file:
@@ -34,11 +33,10 @@
 
 - name: Windows | Install Terraform
   win_unzip:
-    src: C:\tmp\terraform_{{ terraform_version }}_windows_amd64.zip
+    src: '%TEMP%\terraform_{{ terraform_version }}_windows_amd64.zip'
     dest: "{{ terraform_path }}"
     creates: "{{ terraform_path }}terraform.exe"
-  when:
-    - terraform_version not in terraform_installed_version.stdout
+  when: terraform_version not in terraform_installed_version.stdout
 
 - name: Windows | Add Terraform to PATH
   win_path:
