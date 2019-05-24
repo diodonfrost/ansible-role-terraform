@@ -129,6 +129,19 @@ This role can also install a specific version of terraform.
 
 ```
 
+Install Terraform 0.11.4.
+
+```yaml
+---
+- hosts: localhost
+  become: true
+  roles:
+    - role: ansible-role-terraform
+      vars:
+        - terraform_version: 0.11.14
+
+```
+
 ## Local Testing
 
 The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
