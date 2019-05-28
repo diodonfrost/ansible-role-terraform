@@ -2,7 +2,7 @@ galaxy_info:
   role_name: terraform
   author: diodonfrost
   company: diodonfrost
-  description: Ansible role for install terraform on a large number of os
+  description: Ansible role for install the latest version of Terraform
   license: license Apache
 
   min_ansible_version: 2.5
