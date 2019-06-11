@@ -25,4 +25,4 @@
     src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
     dest: "{{ terraform_path }}"
     remote_src: yes
-  when: terraform_version not in terraform_installed_version.stdout | default('')
+  when: terraform_version not in terraform_installed_version.stdout_lines | default('empty') | first
