@@ -226,7 +226,7 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Test role
-  - 'inspec exec tests/inspec -t docker://$(cat ${container_id})'
+  - 'inspec exec tests/inspec --chef-license accept-silent -t docker://$(cat ${container_id})'
 
   # Delete container
   - 'sudo docker rm -f "$(cat ${container_id})"'
