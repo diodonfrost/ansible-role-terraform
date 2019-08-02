@@ -9,8 +9,13 @@
 
 - name: Windows | Finds the latest Terraform version when latest var is define
   set_fact:
-    terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
+
+- name: Windows | Use the specified Terraform version when latest var is not define
+  set_fact:
+    terraform_version_to_install: "{{ terraform_version }}"
+  when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
 - name: Windows | Check if terraform is present on Windows with the right version
@@ -22,9 +27,9 @@
 
 - name: Windows | Download Terraform
   win_get_url:
-    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_windows_amd64.zip
-    dest: '%TEMP%\terraform_{{ terraform_version }}_windows_amd64.zip'
-  when: terraform_version not in terraform_installed_version.stdout_lines | default('empty') | first
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version_to_install }}/terraform_{{ terraform_version_to_install }}_windows_amd64.zip
+    dest: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
+  when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
 
 - name: Windows | Create Terraform folder
   win_file:
@@ -33,10 +38,10 @@
 
 - name: Windows | Install Terraform
   win_unzip:
-    src: '%TEMP%\terraform_{{ terraform_version }}_windows_amd64.zip'
+    src: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
     dest: "{{ terraform_path }}"
     creates: "{{ terraform_path }}terraform.exe"
-  when: terraform_version not in terraform_installed_version.stdout_lines | default('empty') | first
+  when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
 
 - name: Windows | Add Terraform to PATH
   win_path:

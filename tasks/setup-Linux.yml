@@ -9,8 +9,13 @@
 
 - name: Linux | Finds the latest Terraform version when latest var is define
   set_fact:
-    terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
+
+- name: Linux | Use the specified Terraform version when latest var is not define
+  set_fact:
+    terraform_version_to_install: "{{ terraform_version }}"
+  when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
 - name: Linux | Check if Terraform is present with the right version
@@ -22,7 +27,7 @@
 
 - name: Linux | Install Terraform
   unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version_to_install }}/terraform_{{ terraform_version_to_install }}_linux_amd64.zip"
     dest: "{{ terraform_path }}"
     remote_src: yes
-  when: terraform_version not in terraform_installed_version.stdout_lines | default('empty') | first
+  when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
