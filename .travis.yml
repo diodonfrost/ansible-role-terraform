@@ -26,6 +26,7 @@ env:
     playbook: terraform-latest
   - distribution: fedora
     version: "32"
+    playbook: terraform-0.11.0
   - distribution: fedora
     version: "31"
     playbook: terraform-latest
