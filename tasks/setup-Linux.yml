@@ -6,7 +6,7 @@
     url: https://releases.hashicorp.com/terraform/index.json
     return_content: yes
   register: terraform_index
-  when: terragrunt_version == "latest"
+  when: terraform_version == "latest"
 
 - name: Linux | Finds the latest Terraform version when latest var is define
   set_fact:
