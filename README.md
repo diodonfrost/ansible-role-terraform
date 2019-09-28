@@ -20,6 +20,7 @@ Supported platforms:
     - 7
 - name: Fedora
   versions:
+    - 32
     - 31
     - 30
     - 29

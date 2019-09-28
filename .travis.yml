@@ -22,6 +22,11 @@ env:
 #
 #--------------------------------
   - distribution: fedora
+    version: "32"
+    playbook: terraform-latest
+  - distribution: fedora
+    version: "32"
+  - distribution: fedora
     version: "31"
     playbook: terraform-latest
   - distribution: fedora
