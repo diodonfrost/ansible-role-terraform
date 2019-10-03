@@ -10,6 +10,12 @@ env:
 #
 #-----------------------------------------------
   - distribution: centos
+    version: "8"
+    playbook: terraform-latest
+  - distribution: centos
+    version: "8"
+    playbook: terraform-0.11.0
+  - distribution: centos
     version: "7"
     playbook: terraform-latest
   - distribution: centos
