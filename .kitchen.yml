@@ -70,6 +70,12 @@ platforms:
       platform: ubuntu
 
   # Debian
+  - name: debian-10
+    driver:
+      image: diodonfrost/debian-10-ansible
+      provision_command: apt-get install -y systemd
+      run_command: /bin/systemd
+      platform: debian
   - name: debian-9
     driver:
       image: diodonfrost/debian-9-ansible
