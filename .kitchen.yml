@@ -4,6 +4,8 @@ driver:
   name: docker
   privileged: true
   volume: /sys/fs/cgroup:/sys/fs/cgroup
+  provision_command:
+    - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 # Ansible will be our provisioner
 provisioner:
@@ -21,139 +23,117 @@ verifier:
 
 platforms:
   # Centos
+  - name: centos-8
+    driver:
+      image: diodonfrost/centos-8-ansible
+      platform: centos
   - name: centos-7
     driver:
       image: diodonfrost/centos-7-ansible
-      run_command: /sbin/init
       platform: centos
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
+  - name: centos-6
+    driver:
+      image: diodonfrost/centos-6-ansible
+      platform: centos
 
   # Fedora
+  - name: fedora-32
+    driver:
+      image: diodonfrost/fedora-32-ansible
+      platform: centos
+  - name: fedora-31
+    driver:
+      image: diodonfrost/fedora-31-ansible
+      platform: centos
+  - name: fedora-30
+    driver:
+      image: diodonfrost/fedora-30-ansible
+      platform: centos
+  - name: fedora-29
+    driver:
+      image: diodonfrost/fedora-29-ansible
+      platform: centos
+  - name: fedora-28
+    driver:
+      image: diodonfrost/fedora-28-ansible
+      platform: centos
   - name: fedora-27
     driver:
       image: diodonfrost/fedora-27-ansible
-      run_command: /usr/sbin/init
       platform: centos
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
   - name: fedora-26
     driver:
       image: diodonfrost/fedora-26-ansible
-      run_command: /usr/sbin/init
       platform: centos
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
   # Ubuntu
+  - name: ubuntu-20.04
+    driver:
+      image: diodonfrost/ubuntu-20.04-ansible
+      platform: ubuntu
   - name: ubuntu-19.04
     driver:
       image: diodonfrost/ubuntu-19.04-ansible
-      provision_command: apt-get install -y init
-      run_command: /sbin/init
       platform: ubuntu
   - name: ubuntu-18.04
     driver:
       image: diodonfrost/ubuntu-18.04-ansible
-      provision_command: apt-get install -y init
-      run_command: /sbin/init
       platform: ubuntu
   - name: ubuntu-16.04
     driver:
       image: diodonfrost/ubuntu-16.04-ansible
-      provision_command: apt-get install -y init
-      run_command: /sbin/init
       platform: ubuntu
   - name: ubuntu-14.04
     driver:
-      image: diodonfrost/ubuntu-14.04-ansible
+      image: ubuntu:14.04
+      platform: ubuntu
+  - name: ubuntu-12.04
+    driver:
+      image: diodonfrost/ubuntu-12.04-ansible
       platform: ubuntu
 
   # Debian
   - name: debian-10
     driver:
       image: diodonfrost/debian-10-ansible
-      provision_command: apt-get install -y systemd
-      run_command: /bin/systemd
       platform: debian
   - name: debian-9
     driver:
       image: diodonfrost/debian-9-ansible
-      provision_command: apt-get install -y systemd
-      run_command: /bin/systemd
       platform: debian
   - name: debian-8
     driver:
       image: diodonfrost/debian-8-ansible
-      run_command: /sbin/init
       platform: debian
 
   # Oraclelinux
+  - name: oraclelinux-8
+    driver:
+      image: diodonfrost/oraclelinux-8-ansible
+      platform: centos
   - name: oraclelinux-7
     driver:
       image: diodonfrost/oraclelinux-7-ansible
-      run_command: /usr/sbin/init
       platform: centos
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
+  - name: oraclelinux-6
+    driver:
+      image: diodonfrost/oraclelinux-6-ansible
+      platform: centos
 
   # Amazonlinux
   - name: amazonlinux-2
     driver:
       image: diodonfrost/amazonlinux-2-ansible
-      run_command: /usr/sbin/init
       platform: centos
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-
-  # Opensuse
-  - name: opensuse-15.1
+  - name: amazonlinux-1
     driver:
-      image: diodonfrost/opensuse-15.1-ansible
-      run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
-  - name: opensuse-15
-    driver:
-      image: diodonfrost/opensuse-15-ansible
-      run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
-  - name: opensuse-42.3
-    driver:
-      image: diodonfrost/opensuse-42.3-ansible
-      run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
-  - name: opensuse-42.2
-    driver:
-      image: diodonfrost/opensuse-42.2-ansible
-      run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
-  - name: opensuse-13.2
-    driver:
-      image: diodonfrost/opensuse-13.2-ansible
-      run_command: /usr/lib/systemd/systemd
-      platform: opensuse
-      provision_command:
-        - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-        - systemctl enable sshd
+      image: diodonfrost/amazonlinux-1-ansible
+      platform: centos
 
   # Archlinux
   - name: archlinux-rolling
     driver:
       image: diodonfrost/archlinux-rolling-ansible
-      run_command: /usr/lib/systemd/systemd
       platform: arch
       provision_command:
         - sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
