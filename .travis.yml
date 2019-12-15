@@ -9,17 +9,13 @@ env:
 # CentOS
 #
 #-----------------------------------------------
-  - distribution: centos
-    version: "8"
+  - distribution: centos-8
     playbook: terraform-latest
-  - distribution: centos
-    version: "8"
+  - distribution: centos-8
     playbook: terraform-0.11.0
-  - distribution: centos
-    version: "7"
+  - distribution: centos-7
     playbook: terraform-latest
-  - distribution: centos
-    version: "7"
+  - distribution: centos-7
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -27,47 +23,33 @@ env:
 # Fedora
 #
 #--------------------------------
-  - distribution: fedora
-    version: "32"
+  - distribution: fedora-32
     playbook: terraform-latest
-  - distribution: fedora
-    version: "32"
+  - distribution: fedora-32
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "31"
+  - distribution: fedora-31
     playbook: terraform-latest
-  - distribution: fedora
-    version: "31"
+  - distribution: fedora-31
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "30"
+  - distribution: fedora-30
     playbook: terraform-latest
-  - distribution: fedora
-    version: "30"
+  - distribution: fedora-30
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "29"
+  - distribution: fedora-29
     playbook: terraform-latest
-  - distribution: fedora
-    version: "29"
+  - distribution: fedora-29
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "28"
+  - distribution: fedora-28
     playbook: terraform-latest
-  - distribution: fedora
-    version: "28"
+  - distribution: fedora-28
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "27"
+  - distribution: fedora-27
     playbook: terraform-latest
-  - distribution: fedora
-    version: "27"
+  - distribution: fedora-27
     playbook: terraform-0.11.0
-  - distribution: fedora
-    version: "26"
+  - distribution: fedora-26
     playbook: terraform-latest
-  - distribution: fedora
-    version: "26"
+  - distribution: fedora-26
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -75,29 +57,21 @@ env:
 # Ubuntu
 #
 #--------------------------------
-  - distribution: ubuntu
-    version: "19.04"
+  - distribution: ubuntu-19.04
     playbook: terraform-latest
-  - distribution: ubuntu
-    version: "19.04"
+  - distribution: ubuntu-19.04
     playbook: terraform-0.11.0
-  - distribution: ubuntu
-    version: "18.04"
+  - distribution: ubuntu-18.04
     playbook: terraform-latest
-  - distribution: ubuntu
-    version: "18.04"
+  - distribution: ubuntu-18.04
     playbook: terraform-0.11.0
-  - distribution: ubuntu
-    version: "16.04"
+  - distribution: ubuntu-16.04
     playbook: terraform-latest
-  - distribution: ubuntu
-    version: "16.04"
+  - distribution: ubuntu-16.04
     playbook: terraform-0.11.0
-  - distribution: ubuntu
-    version: "14.04"
+  - distribution: ubuntu-14.04
     playbook: terraform-latest
-  - distribution: ubuntu
-    version: "14.04"
+  - distribution: ubuntu-14.04
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -105,23 +79,17 @@ env:
 # Debian
 #
 #--------------------------------
-  - distribution: debian
-    version: "10"
+  - distribution: debian-10
     playbook: terraform-latest
-  - distribution: debian
-    version: "10"
+  - distribution: debian-10
     playbook: terraform-0.11.0
-  - distribution: debian
-    version: "9"
+  - distribution: debian-9
     playbook: terraform-latest
-  - distribution: debian
-    version: "9"
+  - distribution: debian-9
     playbook: terraform-0.11.0
-  - distribution: debian
-    version: "8"
+  - distribution: debian-8
     playbook: terraform-latest
-  - distribution: debian
-    version: "8"
+  - distribution: debian-8
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -129,11 +97,13 @@ env:
 # Oraclelinux
 #
 #--------------------------------
-  - distribution: oraclelinux
-    version: "7"
+  - distribution: oraclelinux-8
     playbook: terraform-latest
-  - distribution: oraclelinux
-    version: "7"
+  - distribution: oraclelinux-8
+    playbook: terraform-0.11.0
+  - distribution: oraclelinux-7
+    playbook: terraform-latest
+  - distribution: oraclelinux-7
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -141,11 +111,9 @@ env:
 # Amazonlinux
 #
 #--------------------------------
-  - distribution: amazonlinux
-    version: "2"
+  - distribution: amazonlinux-2
     playbook: terraform-latest
-  - distribution: amazonlinux
-    version: "2"
+  - distribution: amazonlinux-2
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -153,35 +121,25 @@ env:
 # Opensuse
 #
 #--------------------------------
-  - distribution: opensuse
-    version: "15.1"
+  - distribution: opensuse-15.1
     playbook: terraform-latest
-  - distribution: opensuse
-    version: "15.1"
+  - distribution: opensuse-15.1
     playbook: terraform-0.11.0
-  - distribution: opensuse
-    version: "15"
+  - distribution: opensuse-15
     playbook: terraform-latest
-  - distribution: opensuse
-    version: "15"
+  - distribution: opensuse-15
     playbook: terraform-0.11.0
-  - distribution: opensuse
-    version: "42.3"
+  - distribution: opensuse-42.3
     playbook: terraform-latest
-  - distribution: opensuse
-    version: "42.3"
+  - distribution: opensuse-42.3
     playbook: terraform-0.11.0
-  - distribution: opensuse
-    version: "42.2"
+  - distribution: opensuse-42.2
     playbook: terraform-latest
-  - distribution: opensuse
-    version: "42.2"
+  - distribution: opensuse-42.2
     playbook: terraform-0.11.0
-  - distribution: opensuse
-    version: "13.2"
+  - distribution: opensuse-13.2
     playbook: terraform-latest
-  - distribution: opensuse
-    version: "13.2"
+  - distribution: opensuse-13.2
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -189,11 +147,9 @@ env:
 # Archlinux
 #
 #--------------------------------
-  - distribution: archlinux
-    version: "rolling"
+  - distribution: archlinux-rolling
     playbook: terraform-latest
-  - distribution: archlinux
-    version: "rolling"
+  - distribution: archlinux-rolling
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -201,11 +157,9 @@ env:
 # Alpine
 #
 #--------------------------------
-  - distribution: alpine
-    version: "rolling"
+  - distribution: alpine-rolling
     playbook: terraform-latest
-  - distribution: alpine
-    version: "rolling"
+  - distribution: alpine-rolling
     playbook: terraform-0.11.0
 
 #--------------------------------
@@ -213,22 +167,20 @@ env:
 # Gentoo
 #
 #--------------------------------
-  - distribution: gentoo
-    version: "stage3"
+  - distribution: gentoo-stage3
     playbook: terraform-latest
-  - distribution: gentoo
-    version: "stage3"
+  - distribution: gentoo-stage3
     playbook: terraform-0.11.0
 
 before_install:
   # Build docker container
-  - 'sudo docker pull diodonfrost/${distribution}-${version}-ansible:latest'
+  - 'sudo docker pull diodonfrost/${distribution}-ansible:latest'
 
 script:
   - container_id=$(mktemp)
 
   # Run container and mount ansible role with it
-  - 'sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-role-terraform:ro diodonfrost/${distribution}-${version}-ansible:latest > "${container_id}"'
+  - 'sudo docker run --detach --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro --volume="${PWD}":/etc/ansible/roles/ansible-role-terraform:ro diodonfrost/${distribution}-ansible:latest > "${container_id}"'
 
   # Check syntax
   - 'sudo docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -v /etc/ansible/roles/ansible-role-terraform/tests/playbooks/${playbook}.yml --syntax-check'
