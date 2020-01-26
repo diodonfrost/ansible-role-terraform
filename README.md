@@ -1,6 +1,6 @@
 # ansible-role-terraform
 
-[![Build Status](https://travis-ci.org/diodonfrost/ansible-role-terraform.svg?branch=master)](https://travis-ci.org/diodonfrost/ansible-role-terraform)
+[![Build Status](https://travis-ci.com/diodonfrost/ansible-role-terraform.svg?branch=master)](https://travis-ci.com/diodonfrost/ansible-role-terraform)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-diodonfrost.terraform-660198.svg)](https://galaxy.ansible.com/diodonfrost/terraform)
 
 This role provide a compliance for install terraform on your target host.
