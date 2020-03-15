@@ -5,3 +5,7 @@
 # Possible values: https://releases.hashicorp.com/terraform/index.json
 # Default: latest
 terraform_version: latest
+
+# Define where to install terraform binary
+# Default: use local system path defined in Ansible vars/*.yml
+terraform_path: "{{ terraform_default_path }}"
