@@ -101,8 +101,9 @@ This role has multiple variables. The defaults for all these variables are the f
 # Default: latest
 terraform_version: latest
 
-# Terraform destination path
-terraform_path: /usr/local/bin/
+# Define where to install terraform binary
+# Default: use local system path defined in Ansible vars/*.yml
+terraform_path: "{{ terraform_default_path }}"
 ```
 
 ## Dependencies
