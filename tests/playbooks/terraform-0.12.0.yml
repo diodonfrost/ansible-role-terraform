@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: ansible-role-terraform
+      vars:
+        terraform_version: 0.12.0
+    
