@@ -2,11 +2,13 @@ name: CI
 
 on:
   push:
+  pull_request: 
   schedule:
     - cron: '0 18 * * sun'
 
 jobs:
   build:
+    name: ${{ matrix.distribution }} ${{ matrix.playbook }}
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: false
