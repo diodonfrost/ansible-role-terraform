@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-terraform"
+      include_role:
+        name: "ansible-role-terraform"
+      vars:
+        terraform_version: "{{ ansible_env.terraform_version | default('latest') }}"
