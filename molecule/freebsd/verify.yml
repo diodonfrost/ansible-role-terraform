@@ -1,0 +1,13 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: FreeBSD | Terraform should be functionnal
+      command: terraform --version
+      register: terraform_result
+
+    - name: FreeBSD | Verify commands outputs
+      assert:
+        that:
+          - terraform_result.rc == 0
+        success_msg: "All tests passed"
