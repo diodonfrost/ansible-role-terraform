@@ -1,4 +1,1 @@
-Gemfile.lock
-.kitchen
-tests/inspec/inspec.lock
-Dockerfile-kitchen*
+__pycache__
