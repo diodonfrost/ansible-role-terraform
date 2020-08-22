@@ -1,0 +1,65 @@
+name: molecule
+
+on:
+  push:
+  pull_request: 
+  schedule:
+    - cron: '0 18 * * sun'
+
+jobs:
+  build:
+    name: ${{ matrix.distribution }} terraform ${{ matrix.terraform_version }}
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        distribution:
+          - centos-8
+          - centos-7
+          - fedora-32
+          - fedora-31
+          - fedora-30
+          - fedora-29
+          - fedora-28
+          - fedora-27
+          - fedora-26
+          - ubuntu-20.04
+          - ubuntu-18.04
+          - ubuntu-16.04
+          - ubuntu-14.04
+          - debian-10
+          - debian-9
+          - debian-8
+          - oraclelinux-8
+          - oraclelinux-7
+          - amazonlinux-2
+          - opensuse-15.1
+          - opensuse-15
+          - opensuse-42.3
+          - opensuse-42.2
+          - opensuse-13.2
+          - archlinux-rolling
+          - alpine-rolling
+          - gentoo-stage3
+        terraform_version:
+          - latest
+          - 0.12.0
+          - 0.11.0
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Molecule
+        run: |
+          python -m pip install --upgrade pip
+          pip install molecule==3.0.6 docker==4.2.0 ansible==2.9.7
+
+      - name: Test Ansible role
+        run: |
+          distribution=${{ matrix.distribution }} terraform_version=${{ matrix.terraform_version }} molecule test
