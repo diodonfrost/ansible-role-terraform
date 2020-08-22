@@ -1,0 +1,5 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - win_shell: echo "nothing to do"

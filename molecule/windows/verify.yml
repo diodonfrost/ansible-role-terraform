@@ -1,0 +1,13 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+  - name: Windows | Terraform should be functionnal
+    win_command: terraform --version
+    register: terraform_result
+
+  - name: Windows | Verify commands outputs
+    assert:
+      that:
+        - terraform_result.rc == 0
+      success_msg: "All tests passed"

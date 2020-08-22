@@ -1,0 +1,25 @@
+---
+driver:
+  name: vagrant
+  provider:
+    name: VBox
+platforms:
+  - name: windows
+    box: diodonfrost/${distribution:-windows-2k16}
+    memory: 4096
+    cpus: 2
+provisioner:
+  name: ansible
+  playbooks:
+    prepare: prepare.yml
+  inventory:
+    host_vars:
+      windows:
+        ansible_become: false
+        ansible_user: vagrant
+        ansible_password: vagrant
+        ansible_port: 55985
+        ansible_host: 127.0.0.1
+        ansible_connection: winrm
+        ansible_winrm_scheme: http
+        ansible_winrm_server_cert_validation: ignore
