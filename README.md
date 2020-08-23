@@ -153,75 +153,44 @@ Install Terraform 0.11.4.
 
 The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
 
-You can also use Virtualbox with kitchen-vagrant to run tests locally. You will have to install Virtualbox and terraform on your system. For all our tests we use test-kitchen.
-
-Next install test-kitchen:
-
-```shell
-# Install dependencies
-gem install bundler
-bundle install
-```
+You can also use Virtualbox with molecule to run tests locally. You will have to install Virtualbox and Vagrant on your system. For all our tests we use molecule.
 
 ### Testing with Docker
 
 ```shell
-# List all tests with kitchen
-kitchen list
+# Test ansible role with centos-8
+distribution=centos-8 molecule test
 
-# fast test on one machine
-kitchen test terraform-latest-centos-7
+# Test ansible role with ubuntu-20.04
+distribution=ubuntu-20.04 molecule test
 
-# test on all machines
-kitchen test
+# Test ansible role with alpine-rolling
+distribution=alpine-rolling molecule test
 
-# for development, create environment
-kitchen create terraform-latest-centos-7
+# Create centos-7 instance
+distribution=centos-7 molecule create
 
-# Apply ansible playbook
-kitchen converge terraform-latest-centos-7
+# Apply role on centos-7 instance
+distribution=centos-7 molecule converge
 
-# Apply inspec tests
-kitchen verify terraform-latest-centos-7
+# Launch tests on centos-7 instance
+distribution=centos-7 molecule verify
 ```
 
-### Testing with Virtualbox
+### Testing with Vagrant and Virtualbox
 
 ```shell
-# Specify kitchen file on Linux
-export KITCHEN_YAML=.kitchen-vagrant.yml
+# Test ansible role with FreeBSD
+molecule test -s freebsd
 
-# fast test on one machine
-kitchen test terraform-latest-centos-7
-```
+# Test ansible role with OpenBSD
+molecule test -s openbsd
 
-### Testing on Windows with Virtualbox
+# Test ansible role with Solaris
+molecule test -s solaris
 
-Windows can only be test with Virtualbox provider, do not use 'kitchen test' command for testing Windows environment. There 4 steps you will be using with test-kitchen as part of your workflow.
-
-First of all we must set the kitchen file:
-```shell
-# For testing Windows
-export KITCHEN_YAML=.kitchen-windows.yml
-```
-
-Provision the virtual machines, a Linux machine to run Ansible and Windows machines to apply playbook again:
-```shell
-# deploy machines
-kitchen create
-
-# Launch playbook
-kitchen converge
-```
-
-Finaly launch inspec tests:
-```shell
-kitchen verify
-```
-
-For cleaning environment use:
-```shell
-kitchen destroy
+# Test ansible role with Windows
+molecule test -s windows
 ```
 
 ## License

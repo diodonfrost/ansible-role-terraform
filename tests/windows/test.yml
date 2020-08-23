@@ -1,5 +1,0 @@
----
-- name: ansible-role-terraform
-  hosts: windows-machines
-  roles:
-    - ansible-role-terraform
