@@ -180,7 +180,7 @@ before_install:
   - 'docker pull diodonfrost/${distribution}-ansible:latest'
 
 install:
-  - 'pip install molecule==3.0.6 docker==4.2.0 ansible==2.9.7'
+  - 'pip install -r requirements.txt'
 
 script:
   - 'distribution=${distribution} terraform_version=${terraform_version} molecule test'
