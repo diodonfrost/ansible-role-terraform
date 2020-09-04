@@ -6,6 +6,7 @@
     url: https://releases.hashicorp.com/terraform/index.json
     return_content: yes
   register: terraform_index
+  when: terraform_version == 'latest'
 
 - name: FreeBSD | Finds the latest Terraform version when latest var is define
   set_fact:
