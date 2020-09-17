@@ -132,11 +132,10 @@ This role can also install a specific version of terraform.
   roles:
     - role: ansible-role-terraform
       vars:
-        - terraform_version: 0.12.0-rc1
-
+        terraform_version: 0.12.0-rc1
 ```
 
-Install Terraform 0.11.4.
+Install Terraform 0.11.14
 
 ```yaml
 ---
@@ -145,15 +144,23 @@ Install Terraform 0.11.4.
   roles:
     - role: ansible-role-terraform
       vars:
-        - terraform_version: 0.11.14
-
+        terraform_version: 0.11.14
 ```
 
 ## Local Testing
 
-The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system.
+This project uses [Molecule](http://molecule.readthedocs.io/) to aid in the
+development and testing.
 
-You can also use Virtualbox with molecule to run tests locally. You will have to install Virtualbox and Vagrant on your system. For all our tests we use molecule.
+To develop or test you'll need to have installed the following:
+
+* Linux (e.g. [Ubuntu](http://www.ubuntu.com/))
+* [Docker](https://www.docker.com/)
+* [Python](https://www.python.org/) (including python-pip)
+* [Ansible](https://www.ansible.com/)
+* [Molecule](http://molecule.readthedocs.io/)
+* [Virtualbox](https://www.virtualbox.org/) (if you test windows system)
+* [Vagrant](https://www.vagrantup.com/downloads.html) (if you test windows system)
 
 ### Testing with Docker
 
