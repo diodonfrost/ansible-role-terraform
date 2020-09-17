@@ -1,3 +1,4 @@
 ---
 # vars file for terraform in SunOS system
 terraform_default_path: /usr/sbin
+os_type: solaris

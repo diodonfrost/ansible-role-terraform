@@ -4,5 +4,10 @@
 - name: Include OS specific variables.
   include_vars: "{{ ansible_system }}.yml"
 
-- name: Install Terraform
-  include_tasks: "setup-{{ ansible_system }}.yml"
+- name: Linux/Unix | Install Terraform
+  include_tasks: "setup-Linux-Unix.yml"
+  when: ansible_system != "Win32NT"
+
+- name: Windows | Install Terraform
+  include_tasks: "setup-Windows.yml"
+  when: ansible_system == "Win32NT"
