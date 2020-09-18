@@ -33,11 +33,8 @@ jobs:
           - oraclelinux-8
           - oraclelinux-7
           - amazonlinux-2
-          - opensuse-15.1
-          - opensuse-15
-          - opensuse-42.3
-          - opensuse-42.2
-          - opensuse-13.2
+          - opensuse-leap
+          - opensuse-tumbleweed
           - archlinux-rolling
           - alpine-rolling
           - gentoo-stage3

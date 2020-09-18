@@ -51,13 +51,7 @@ Supported platforms:
     - 2016.03
 - name: opensuse
   versions:
-    - 42.3
-    - 42.2
-    - 42.1
-    - 13.2
-- name: SLES
-  versions:
-    - 15
+    - any
 - name: ArchLinux
   versions:
     - any

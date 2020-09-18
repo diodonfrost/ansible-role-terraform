@@ -125,25 +125,13 @@ env:
 # Opensuse
 #
 #--------------------------------
-  - distribution: opensuse-15.1
+  - distribution: opensuse-leap
     terraform_version: latest
-  - distribution: opensuse-15.1
+  - distribution: opensuse-leap
     terraform_version: 0.11.0
-  - distribution: opensuse-15
+  - distribution: opensuse-tumbleweed
     terraform_version: latest
-  - distribution: opensuse-15
-    terraform_version: 0.11.0
-  - distribution: opensuse-42.3
-    terraform_version: latest
-  - distribution: opensuse-42.3
-    terraform_version: 0.11.0
-  - distribution: opensuse-42.2
-    terraform_version: latest
-  - distribution: opensuse-42.2
-    terraform_version: 0.11.0
-  - distribution: opensuse-13.2
-    terraform_version: latest
-  - distribution: opensuse-13.2
+  - distribution: opensuse-tumbleweed
     terraform_version: 0.11.0
 
 #--------------------------------
