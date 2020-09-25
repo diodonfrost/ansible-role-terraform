@@ -6,4 +6,4 @@
       include_role:
         name: "ansible-role-terraform"
       vars:
-        terraform_version: latest
+        terraform_version: "{{ lookup('env', 'terraform_version') | default('latest', true) }}"

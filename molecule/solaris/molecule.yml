@@ -8,5 +8,3 @@ platforms:
     box: MartijnDwars/solaris11_4
     memory: 1024
     cpus: 2
-    env:
-      terraform_version: "${terraform_version:-latest}"
