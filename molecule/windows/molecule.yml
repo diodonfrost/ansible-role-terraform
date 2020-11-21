@@ -5,7 +5,7 @@ driver:
     name: VBox
 platforms:
   - name: windows
-    box: diodonfrost/${distribution:-windows-2k16}
+    box: diodonfrost/${image:-windows-2k16}
     memory: 4096
     cpus: 2
 provisioner:
