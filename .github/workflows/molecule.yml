@@ -62,3 +62,9 @@ jobs:
         env:
           image: ${{ matrix.image }}
           terraform_version: ${{ matrix.terraform_version }}
+
+      - name: Test Ansible role with check_mode enable
+        run: molecule check
+        env:
+          image: ${{ matrix.image }}
+          terraform_version: ${{ matrix.terraform_version }}
