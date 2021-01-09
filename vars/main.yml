@@ -1,2 +1,9 @@
 ---
 # vars file for ansible-role-terraform
+base_arch:
+  i386: '386'
+  x86_64: 'amd64'
+  amd64: 'amd64'
+  aarch64: 'arm64'
+  armv7l: 'arm'
+  armv6l: 'arm'
