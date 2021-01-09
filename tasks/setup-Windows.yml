@@ -29,7 +29,7 @@
 
 - name: Windows | Download Terraform
   win_get_url:
-    url: https://releases.hashicorp.com/terraform/{{ terraform_version_to_install }}/terraform_{{ terraform_version_to_install }}_windows_amd64.zip
+    url: "{{ terraform_pkg_url }}"
     dest: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
   when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
 

@@ -29,7 +29,7 @@
 
 - name: Linux/Unix | Install Terraform
   unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{ terraform_version_to_install }}/terraform_{{ terraform_version_to_install }}_{{ os_type }}_amd64.zip"
+    src: "{{ terraform_pkg_url }}"
     dest: "{{ terraform_path }}"
     remote_src: yes
   when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
