@@ -10,8 +10,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: yes
     pre_build_image: yes
-    env:
-      terraform_version: "${terraform_version:-latest}"
 provisioner:
   name: ansible
 verifier:

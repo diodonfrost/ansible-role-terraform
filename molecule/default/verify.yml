@@ -11,12 +11,12 @@
         that:
           - terraform_result.rc == 0
         success_msg: "All tests passed"
-      when: ansible_env.terraform_version == "latest"
+      when: lookup('env', 'terraform_version') == "latest"
 
     - name: Linux | Verify commands outputs
       assert:
         that:
           - terraform_result.rc == 0
-          - ansible_env.terraform_version in terraform_result.stdout
+          - lookup('env', 'terraform_version') in terraform_result.stdout
         success_msg: "All tests passed"
-      when: ansible_env.terraform_version != "latest"
+      when: lookup('env', 'terraform_version') != "latest"
