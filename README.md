@@ -9,82 +9,8 @@ This role provide a compliance for install terraform on your target host.
 
 This role was developed using Ansible 2.5 Backwards compatibility is not guaranteed.
 Use `ansible-galaxy install diodonfrost.terraform` to install the role on your system.
-*   Ansible >= 2.5
+*   Ansible >= 2.8
 *   Python >= 2.7
-
-Supported platforms:
-
-```yaml
-- name: EL
-  versions:
-    - 8
-    - 7
-- name: Fedora
-  versions:
-    - 32
-    - 31
-    - 30
-    - 29
-    - 28
-    - 27
-    - 26
-- name: Debian
-  versions:
-    - buster
-    - stretch
-    - jessie
-    - wheezy
-    - squeeze
-- name: Ubuntu
-  versions:
-    - disco
-    - bionic
-    - xenial
-    - trusty
-- name: OracleLinux
-  versions:
-    - 7
-- name: Amazon
-  versions:
-    - 2017.12
-    - 2016.03
-- name: opensuse
-  versions:
-    - 15.2
-    - 15.1
-    - 15.0
-    - 42.2
-    - 42.1
-- name: ArchLinux
-  versions:
-    - any
-- name: Alpine
-  versions:
-    - any
-- name: Gentoo
-  versions:
-    - stage3
-- name: FreeBSD
-  versions:
-    - 11.2
-    - 10.4
-    - 10.3
-- name: OpenBSD
-  versions:
-    - 6.0
-    - 6.4
-- name: MacOSX
-  versions:
-    - 10.13
-    - 10.12
-    - 10.11
-    - 10.10
-- name: Windows
-  versions:
-    - 2016
-    - 2012R2
-    - 8.1
-```
 
 ## Role Variables
 
@@ -162,6 +88,9 @@ To develop or test you'll need to have installed the following:
 ### Testing with Docker
 
 ```shell
+# Install requirements
+pip install -r requirements-dev.txt
+
 # Test ansible role with centos 8
 molecule test
 
