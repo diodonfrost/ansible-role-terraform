@@ -14,30 +14,30 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - ansible-centos:8
-          - ansible-centos:7
-          - ansible-fedora:32
-          - ansible-fedora:31
-          - ansible-fedora:30
-          - ansible-fedora:29
-          - ansible-fedora:28
-          - ansible-fedora:27
-          - ansible-fedora:26
-          - ansible-ubuntu:20.04
-          - ansible-ubuntu:18.04
-          - ansible-ubuntu:16.04
-          - ansible-ubuntu:14.04
-          - ansible-debian:10
-          - ansible-debian:9
-          - ansible-debian:8
-          - ansible-oraclelinux:8
-          - ansible-oraclelinux:7
-          - ansible-amazonlinux:2
-          - ansible-opensuse:leap
-          - ansible-opensuse:tumbleweed
-          - ansible-archlinux:latest
-          - ansible-alpine:latest
-          - ansible-gentoo:latest
+          - centos:8
+          - centos:7
+          - fedora:32
+          - fedora:31
+          - fedora:30
+          - fedora:29
+          - fedora:28
+          - fedora:27
+          - fedora:26
+          - ubuntu:20.04
+          - ubuntu:18.04
+          - ubuntu:16.04
+          - ubuntu:14.04
+          - debian:10
+          - debian:9
+          - debian:8
+          - oraclelinux:8
+          - oraclelinux:7
+          - amazonlinux:2
+          - opensuse:leap
+          - opensuse:tumbleweed
+          - archlinux:latest
+          - alpine:latest
+          - gentoo:latest
         terraform_version:
           - latest
           - 0.12.0
@@ -60,11 +60,11 @@ jobs:
       - name: Test Ansible role
         run: molecule test
         env:
-          image: ${{ matrix.image }}
+          image: ansible-${{ matrix.image }}
           terraform_version: ${{ matrix.terraform_version }}
 
       - name: Test Ansible role with check_mode enable
         run: molecule check
         env:
-          image: ${{ matrix.image }}
+          image: ansible-${{ matrix.image }}
           terraform_version: ${{ matrix.terraform_version }}
