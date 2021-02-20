@@ -7,3 +7,11 @@ base_arch:
   aarch64: 'arm64'
   armv7l: 'arm'
   armv6l: 'arm'
+
+base_os:
+  Linux: 'Linux-Unix'
+  FreeBSD: 'Linux-Unix'
+  OpenBSD: 'Linux-Unix'
+  Solaris: 'Linux-Unix'
+  Darwin: 'Linux-Unix'
+  Win32NT: 'Windows'
