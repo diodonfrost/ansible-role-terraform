@@ -32,4 +32,4 @@
     src: "{{ terraform_pkg_url }}"
     dest: "{{ terraform_path }}"
     remote_src: yes
-  when: terraform_version_to_install not in terraform_installed_version.stdout_lines | default('empty') | first
+  when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )
