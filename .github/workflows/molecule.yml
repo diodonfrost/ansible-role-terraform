@@ -16,6 +16,9 @@ jobs:
         image:
           - centos:8
           - centos:7
+          - fedora:35
+          - fedora:34
+          - fedora:33
           - fedora:32
           - fedora:31
           - fedora:30
