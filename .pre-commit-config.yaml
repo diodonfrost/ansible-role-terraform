@@ -8,4 +8,3 @@ repos:
       - id: check-added-large-files
       - id: check-case-conflict
       - id: check-merge-conflict
-      - id: check-yaml
