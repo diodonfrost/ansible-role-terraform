@@ -10,6 +10,8 @@ jobs:
   build:
     name: ${{ matrix.image }} terraform ${{ matrix.terraform_version }}
     runs-on: ubuntu-18.04
+    env:
+      docker_namepsace: ghcr.io/diodonfrost/docker-ansible
     strategy:
       fail-fast: false
       matrix:
@@ -63,11 +65,13 @@ jobs:
       - name: Test Ansible role
         run: molecule test
         env:
+          namespace: ${{ env.docker_namepsace }}
           image: ansible-${{ matrix.image }}
           terraform_version: ${{ matrix.terraform_version }}
 
       - name: Test Ansible role with check_mode enable
         run: molecule check
         env:
+          namespace: ${{ env.docker_namepsace }}
           image: ansible-${{ matrix.image }}
           terraform_version: ${{ matrix.terraform_version }}
