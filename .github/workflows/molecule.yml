@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: ${{ matrix.image }} terraform ${{ matrix.terraform_version }}
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     env:
       docker_namepsace: ghcr.io/diodonfrost/docker-ansible
     strategy:
@@ -18,26 +18,17 @@ jobs:
         image:
           - almalinux:8
           - rockylinux:8
-          - centos:8
           - centos:7
-          - fedora:35
-          - fedora:34
-          - fedora:33
-          - fedora:32
-          - fedora:31
-          - fedora:30
-          - fedora:29
-          - fedora:28
-          - fedora:27
-          - fedora:26
+          - fedora:39
+          - fedora:38
+          - fedora:37
+          - fedora:36
+          - ubuntu:22.04
           - ubuntu:20.04
-          - ubuntu:18.04
-          - ubuntu:16.04
+          - debian:11
           - debian:10
-          - debian:9
-          - debian:8
+          - oraclelinux:9
           - oraclelinux:8
-          - oraclelinux:7
           - amazonlinux:2
           - opensuse:leap
           - opensuse:tumbleweed
@@ -46,14 +37,14 @@ jobs:
           - gentoo:latest
         terraform_version:
           - latest
-          - 0.14.0
+          - 1.4.0
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.8
 
