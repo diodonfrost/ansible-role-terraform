@@ -2,24 +2,23 @@
 driver:
   name: vagrant
   provider:
-    name: VBox
+    name: libvirt
 platforms:
-  - name: windows
-    box: diodonfrost/${image:-windows-2k16}
+  - name: windows-10
+    box: peru/windows-10-enterprise-x64-eval
     memory: 4096
-    cpus: 2
+    cpus: 4
 provisioner:
   name: ansible
-  playbooks:
-    prepare: prepare.yml
-  inventory:
-    host_vars:
-      windows:
-        ansible_become: false
-        ansible_user: vagrant
-        ansible_password: vagrant
-        ansible_port: 55985
-        ansible_host: 127.0.0.1
-        ansible_connection: winrm
-        ansible_winrm_scheme: http
-        ansible_winrm_server_cert_validation: ignore
+  options:
+    extra-vars: "{
+      'ansible_become': 'false',
+      'ansible_user': 'vagrant',
+      'ansible_password': 'vagrant',
+      'ansible_port': '5985',
+      'ansible_connection': 'winrm',
+      'ansible_winrm_transport': 'basic',
+      'ansible_winrm_server_cert_validation': 'ignore',
+      'ansible_shell_type': 'powershell',
+      'ansible_shell_executable': 'None'
+    }"

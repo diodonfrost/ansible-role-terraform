@@ -4,7 +4,7 @@ driver:
   provider:
     name: libvirt
 platforms:
-  - name: freebsd
-    box: generic/freebsd13
+  - name: ubuntu-22.04
+    box: generic/ubuntu2204
     memory: 4096
     cpus: 2

@@ -2,18 +2,18 @@
 - name: Verify
   hosts: all
   tasks:
-    - name: Solaris | Terraform should be functionnal
+    - name: Linux | Terraform should be functionnal
       command: terraform --version
       register: terraform_result
 
-    - name: Solaris | Verify commands outputs
+    - name: Linux | Verify commands outputs
       assert:
         that:
           - terraform_result.rc == 0
         success_msg: "All tests passed"
       when: lookup('env', 'terraform_version') == "latest"
 
-    - name: Solaris | Verify commands outputs
+    - name: Linux | Verify commands outputs
       assert:
         that:
           - terraform_result.rc == 0

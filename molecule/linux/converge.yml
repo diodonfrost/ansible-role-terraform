@@ -1,7 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  become: yes
   tasks:
     - name: "Include ansible-role-terraform"
       include_role:
