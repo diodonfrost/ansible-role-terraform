@@ -5,7 +5,7 @@ galaxy_info:
   description: Ansible role for install the latest version of Terraform
   license: license Apache
 
-  min_ansible_version: 2.5
+  min_ansible_version: 2.9.0
 
   platforms:
     - name: EL

@@ -2,4 +2,5 @@
 - name: Prepare
   hosts: all
   tasks:
-    - win_shell: echo "nothing to do"
+    - name: Windows | nothing to do
+      ansible.windows.win_shell: echo "nothing to do"

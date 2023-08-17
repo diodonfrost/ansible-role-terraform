@@ -2,34 +2,34 @@
 # tasks file for install terraform on Linux and Unix system
 
 - name: Linux/Unix | Find all versions of Terraform
-  uri:
+  ansible.builtin.uri:
     url: https://releases.hashicorp.com/terraform/index.json
-    return_content: yes
+    return_content: true
   register: terraform_index
   when: terraform_version == "latest"
-  check_mode: no
+  check_mode: false
 
 - name: Linux/Unix | Finds the latest Terraform version when latest var is define
-  set_fact:
-    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+  ansible.builtin.set_fact:
+    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
 - name: Linux/Unix | Use the specified Terraform version when latest var is not define
-  set_fact:
+  ansible.builtin.set_fact:
     terraform_version_to_install: "{{ terraform_version }}"
   when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
 - name: Linux/Unix | Check if Terraform is present with the right version
-  command: "{{ terraform_path }}/terraform -version"
+  ansible.builtin.command: "{{ terraform_path }}/terraform -version"
   register: terraform_installed_version
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
   failed_when: false
 
 - name: Linux/Unix | Install Terraform
-  unarchive:
+  ansible.builtin.unarchive:
     src: "{{ terraform_pkg_url }}"
     dest: "{{ terraform_path }}"
-    remote_src: yes
+    remote_src: true
   when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )

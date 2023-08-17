@@ -7,7 +7,7 @@ platforms:
   - name: linux
     image: ${namespace:-diodonfrost}/${image:-ansible-ubuntu:22.04}
     command: ${cmd:-"sleep 999"}
-    pre_build_image: yes
+    pre_build_image: true
 provisioner:
   name: ansible
 verifier:

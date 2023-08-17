@@ -3,18 +3,18 @@
   hosts: all
   tasks:
     - name: FreeBSD | Terraform should be functionnal
-      command: terraform --version
+      ansible.builtin.command: terraform --version
       register: terraform_result
 
     - name: FreeBSD | Verify commands outputs
-      assert:
+      ansible.builtin.assert:
         that:
           - terraform_result.rc == 0
         success_msg: "All tests passed"
       when: lookup('env', 'terraform_version') == "latest"
 
     - name: FreeBSD | Verify commands outputs
-      assert:
+      ansible.builtin.assert:
         that:
           - terraform_result.rc == 0
           - lookup('env', 'terraform_version') in terraform_result.stdout

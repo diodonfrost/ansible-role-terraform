@@ -2,48 +2,48 @@
 # tasks file for install terraform on Windows system
 
 - name: Windows | Find all versions of Terraform
-  win_uri:
+  ansible.windows.win_uri:
     url: https://releases.hashicorp.com/terraform/index.json
-    return_content: yes
+    return_content: true
   register: terraform_index
   when: terraform_version == 'latest'
-  check_mode: no
+  check_mode: false
 
 - name: Windows | Finds the latest Terraform version when latest var is define
-  set_fact:
-    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search','-') | list | sort_versions | last }}"
+  ansible.builtin.set_fact:
+    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
 - name: Windows | Use the specified Terraform version when latest var is not define
-  set_fact:
+  ansible.builtin.set_fact:
     terraform_version_to_install: "{{ terraform_version }}"
   when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
 - name: Windows | Check if terraform is present on Windows with the right version
-  win_command: terraform -version
+  ansible.windows.win_command: terraform -version
   register: terraform_installed_version
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
   failed_when: false
 
 - name: Windows | Download Terraform
-  win_get_url:
+  ansible.windows.win_get_url:
     url: "{{ terraform_pkg_url }}"
     dest: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
   when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
 
 - name: Windows | Create Terraform folder
-  win_file:
+  ansible.windows.win_file:
     path: "{{ terraform_path }}"
     state: directory
 
 - name: Windows | Install Terraform
-  win_unzip:
+  community.windows.win_unzip:
     src: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
     dest: "{{ terraform_path }}"
   when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
 
 - name: Windows | Add Terraform to PATH
-  win_path:
+  ansible.windows.win_path:
     elements: "{{ terraform_path }}"

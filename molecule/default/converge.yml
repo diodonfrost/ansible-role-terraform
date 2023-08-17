@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: "Include ansible-role-terraform"
-      include_role:
+      ansible.builtin.include_role:
         name: "ansible-role-terraform"
       vars:
         terraform_version: "{{ lookup('env', 'terraform_version') | default('latest', true) }}"
