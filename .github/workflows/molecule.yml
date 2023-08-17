@@ -19,8 +19,8 @@ jobs:
           - almalinux:8
           - rockylinux:8
           - centos:stream8
-          - fedora:39
           - fedora:38
+          - fedora:37
           - ubuntu:22.04
           - ubuntu:20.04
           - debian:12
