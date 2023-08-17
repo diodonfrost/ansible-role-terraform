@@ -6,11 +6,7 @@ driver:
 platforms:
   - name: linux
     image: ${namespace:-diodonfrost}/${image:-ansible-ubuntu:22.04}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-      - /var/lib/containerd
-    cgroupns_mode: host
-    privileged: yes
+    command: ${cmd:-"sleep 999"}
     pre_build_image: yes
 provisioner:
   name: ansible
