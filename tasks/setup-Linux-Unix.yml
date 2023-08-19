@@ -29,7 +29,7 @@
 
 - name: Linux/Unix | Install Terraform
   ansible.builtin.unarchive:
-    src: "{{ __terraform_pkg_url }}"
+    src: "{{ terraform_pkg_url }}"
     dest: "{{ terraform_path }}"
     remote_src: true
   when: __terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )

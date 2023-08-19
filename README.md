@@ -25,6 +25,10 @@ This role has multiple variables. The defaults for all these variables are the f
 # Default: latest
 terraform_version: latest
 
+# Define url where to download terraform package
+# Default: use local system path defined in Ansible vars/*.yml
+terraform_pkg_url: "{{ __terraform_pkg_url }}"
+
 # Define where to install terraform binary
 # Default: use local system path defined in Ansible vars/*.yml
 terraform_path: "{{ __terraform_default_path }}"
