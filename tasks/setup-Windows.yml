@@ -11,12 +11,12 @@
 
 - name: Windows | Finds the latest Terraform version when latest var is define
   ansible.builtin.set_fact:
-    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
+    __terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
 - name: Windows | Use the specified Terraform version when latest var is not define
   ansible.builtin.set_fact:
-    terraform_version_to_install: "{{ terraform_version }}"
+    __terraform_version: "{{ terraform_version }}"
   when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
@@ -29,9 +29,9 @@
 
 - name: Windows | Download Terraform
   ansible.windows.win_get_url:
-    url: "{{ terraform_pkg_url }}"
-    dest: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
-  when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
+    url: "{{ __terraform_pkg_url }}"
+    dest: '%TEMP%\terraform_{{ __terraform_version }}_windows_amd64.zip'
+  when: __terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
 
 - name: Windows | Create Terraform folder
   ansible.windows.win_file:
@@ -40,9 +40,9 @@
 
 - name: Windows | Install Terraform
   community.windows.win_unzip:
-    src: '%TEMP%\terraform_{{ terraform_version_to_install }}_windows_amd64.zip'
+    src: '%TEMP%\terraform_{{ __terraform_version }}_windows_amd64.zip'
     dest: "{{ terraform_path }}"
-  when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
+  when: __terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
 
 - name: Windows | Add Terraform to PATH
   ansible.windows.win_path:

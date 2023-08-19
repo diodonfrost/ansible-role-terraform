@@ -11,12 +11,12 @@
 
 - name: Linux/Unix | Finds the latest Terraform version when latest var is define
   ansible.builtin.set_fact:
-    terraform_version_to_install: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
+    __terraform_version: "{{ (terraform_index.content | from_json).versions | reject('search', '-') | list | sort_versions | last }}"
   when: terraform_version == 'latest'
 
 - name: Linux/Unix | Use the specified Terraform version when latest var is not define
   ansible.builtin.set_fact:
-    terraform_version_to_install: "{{ terraform_version }}"
+    __terraform_version: "{{ terraform_version }}"
   when: terraform_version != 'latest'
 
 # This task avoids downloading Terraform every time
@@ -29,7 +29,7 @@
 
 - name: Linux/Unix | Install Terraform
   ansible.builtin.unarchive:
-    src: "{{ terraform_pkg_url }}"
+    src: "{{ __terraform_pkg_url }}"
     dest: "{{ terraform_path }}"
     remote_src: true
-  when: terraform_version_to_install not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )
+  when: __terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )

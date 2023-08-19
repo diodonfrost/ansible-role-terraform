@@ -1,5 +1,4 @@
 ---
 # vars file for terraform in Mac osx system
-terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ terraform_version_to_install }}/terraform_{{ terraform_version_to_install }}_{{ os_type }}_amd64.zip"
-terraform_default_path: /usr/local/bin/
-os_type: darwin
+__terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ __terraform_version }}/terraform_{{ __terraform_version }}_darwin_amd64.zip"
+__terraform_default_path: /usr/local/bin/
