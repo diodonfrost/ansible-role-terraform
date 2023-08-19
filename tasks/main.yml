@@ -5,4 +5,11 @@
   ansible.builtin.include_vars: "{{ ansible_system }}.yml"
 
 - name: Install Terraform
-  ansible.builtin.include_tasks: "setup-{{ base_os[ansible_system] | default('Linux-Unix') }}.yml"
+  ansible.builtin.include_tasks: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "setup-{{ ansible_system }}.yml"
+        - "setup-Linux-Unix.yml"
+      paths:
+        - "tasks"
