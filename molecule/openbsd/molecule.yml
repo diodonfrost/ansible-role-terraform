@@ -4,7 +4,13 @@ driver:
   provider:
     name: libvirt
 platforms:
-  - name: openbsd
-    box: generic/openbsd7
+  - name: terraform-openbsd
+    box: pygolo/openbsd7
     memory: 4096
     cpus: 2
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      terraform-openbsd:
+        ansible_python_interpreter: /usr/local/bin/python3

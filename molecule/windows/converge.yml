@@ -1,10 +1,5 @@
 ---
 - name: Converge
   hosts: all
-  become: true
-  tasks:
-    - name: "Include ansible-role-terraform"
-      ansible.builtin.include_role:
-        name: "ansible-role-terraform"
-      vars:
-        terraform_version: "{{ lookup('env', 'terraform_version') | default('latest', true) }}"
+  roles:
+    - role: diodonfrost.terraform

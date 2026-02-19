@@ -5,4 +5,4 @@
   gather_facts: false
   tasks:
     - name: OpenBSD | Install Ansible requirements
-      ansible.builtin.raw: pkg_add -z python3 unzip-6
+      ansible.builtin.raw: pkg_add -z "python%3" unzip--

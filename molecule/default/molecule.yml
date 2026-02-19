@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: linux
-    image: ${namespace:-diodonfrost}/${image:-ansible-ubuntu:22.04}
+    image: ${namespace:-diodonfrost}/${image:-ansible-ubuntu:24.04}
     command: ${cmd:-"sleep 999"}
     pre_build_image: true
 provisioner:
