@@ -1,13 +1,18 @@
 """Sort complex versions"""
 
-from distutils.version import LooseVersion
+import re
+
+
+def _version_key(version_string):
+    """Convert a version string to a tuple of integers for comparison."""
+    return [int(x) for x in re.findall(r'\d+', version_string)]
 
 
 def filter_sort_versions(value):
     """
         Ansible entrypoint function
     """
-    return sorted(value, key=LooseVersion)
+    return sorted(value, key=_version_key)
 
 
 class FilterModule(object):
