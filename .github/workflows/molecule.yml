@@ -9,39 +9,37 @@ on:
 jobs:
   build:
     name: ${{ matrix.image }} terraform ${{ matrix.terraform_version }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       docker_namepsace: ghcr.io/diodonfrost
     strategy:
       fail-fast: false
       matrix:
         image:
-          - almalinux:8
-          - rockylinux:8
-          - centos:stream8
-          - fedora:38
-          - fedora:37
-          - ubuntu:22.04
-          - ubuntu:20.04
+          - almalinux:10
+          - rockylinux:9
+          - oraclelinux:10
+          - amazonlinux:2023
+          - fedora:43
+          - debian:13
           - debian:12
-          - debian:11
-          - oraclelinux:8
-          - amazonlinux:2
-          - opensuse:leap
+          - ubuntu:26.04
+          - ubuntu:24.04
+          - opensuse:16.0
           - archlinux:latest
-          - gentoo:latest
+          - alpine:latest
         terraform_version:
           - latest
           - 1.4.0
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.10' 
+          python-version: '3.13'
 
       - name: Install Molecule
         run: |
