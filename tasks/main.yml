@@ -2,14 +2,14 @@
 # tasks file for ansible-role-terraform
 
 - name: Include OS specific variables.
-  ansible.builtin.include_vars: "{{ ansible_system }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_facts['system'] }}.yml"
 
 - name: Install Terraform
   ansible.builtin.include_tasks: "{{ lookup('ansible.builtin.first_found', params) }}"
   vars:
     params:
       files:
-        - "setup-{{ ansible_system }}.yml"
+        - "setup-{{ ansible_facts['system'] }}.yml"
         - "setup-Linux-Unix.yml"
       paths:
         - "tasks"
