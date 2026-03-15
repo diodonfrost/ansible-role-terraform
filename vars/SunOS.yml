@@ -1,4 +1,4 @@
 ---
 # vars file for terraform in SunOS system
-__terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ __terraform_version }}/terraform_{{ __terraform_version }}_solaris_amd64.zip"
-__terraform_default_path: /usr/sbin
+_terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ _terraform_version }}/terraform_{{ _terraform_version }}_solaris_amd64.zip"
+_terraform_default_path: /usr/sbin

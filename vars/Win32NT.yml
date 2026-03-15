@@ -1,4 +1,4 @@
 ---
 # vars file for terraform in Windows system
-__terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ __terraform_version }}/terraform_{{ __terraform_version }}_windows_{{ base_arch[ansible_facts['architecture']] | default('amd64') }}.zip"
-__terraform_default_path: C:\HashiCorp\terraform\bin\
+_terraform_pkg_url: "https://releases.hashicorp.com/terraform/{{ _terraform_version }}/terraform_{{ _terraform_version }}_windows_{{ _base_arch[ansible_facts['architecture']] | default('amd64') }}.zip"
+_terraform_default_path: C:\HashiCorp\terraform\bin\
