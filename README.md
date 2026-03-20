@@ -27,11 +27,11 @@ terraform_version: latest
 
 # Define url where to download terraform package
 # Default: use local system path defined in Ansible vars/*.yml
-terraform_pkg_url: "{{ __terraform_pkg_url }}"
+terraform_pkg_url: "{{ _terraform_pkg_url }}"
 
 # Define where to install terraform binary
 # Default: use local system path defined in Ansible vars/*.yml
-terraform_path: "{{ __terraform_default_path }}"
+terraform_path: "{{ _terraform_default_path }}"
 ```
 
 ## Dependencies
