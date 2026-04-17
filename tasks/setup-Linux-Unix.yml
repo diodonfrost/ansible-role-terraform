@@ -27,9 +27,17 @@
   changed_when: false
   failed_when: false
 
+- name: Linux/Unix | Download Terraform archive
+  ansible.builtin.get_url:
+    url: "{{ terraform_pkg_url }}"
+    dest: "/tmp/terraform_{{ _terraform_version }}_linux_{{ _base_arch[ansible_facts['architecture']] | default('amd64') }}.zip"
+    checksum: "{{ ('sha256:' + terraform_checksum_url) if terraform_checksum_verify else omit }}"
+    mode: '0644'
+  when: _terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )
+
 - name: Linux/Unix | Install Terraform
   ansible.builtin.unarchive:
-    src: "{{ terraform_pkg_url }}"
+    src: "/tmp/terraform_{{ _terraform_version }}_linux_{{ _base_arch[ansible_facts['architecture']] | default('amd64') }}.zip"
     dest: "{{ terraform_path }}"
     remote_src: true
   when: _terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )

@@ -32,6 +32,14 @@ terraform_pkg_url: "{{ _terraform_pkg_url }}"
 # Define where to install terraform binary
 # Default: use local system path defined in Ansible vars/*.yml
 terraform_path: "{{ _terraform_default_path }}"
+
+# Enable SHA256 checksum verification of the downloaded archive
+# Default: true
+terraform_checksum_verify: true
+
+# Define the URL of the SHA256SUMS file used to verify the downloaded archive
+# Default: use the URL defined in Ansible vars/main.yml
+terraform_checksum_url: "{{ _terraform_checksum_url }}"
 ```
 
 ## Dependencies

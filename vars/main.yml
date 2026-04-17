@@ -7,3 +7,5 @@ _base_arch:
   aarch64: 'arm64'
   armv7l: 'arm'
   armv6l: 'arm'
+
+_terraform_checksum_url: "https://releases.hashicorp.com/terraform/{{ _terraform_version }}/terraform_{{ _terraform_version }}_SHA256SUMS"

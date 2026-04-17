@@ -31,6 +31,8 @@
   ansible.windows.win_get_url:
     url: "{{ terraform_pkg_url }}"
     dest: '%TEMP%\terraform_{{ _terraform_version }}_windows_amd64.zip'
+    checksum_url: "{{ terraform_checksum_url if terraform_checksum_verify else omit }}"
+    checksum_algorithm: "{{ 'sha256' if terraform_checksum_verify else omit }}"
   when: _terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty']) | first )
 
 - name: Windows | Create Terraform folder
