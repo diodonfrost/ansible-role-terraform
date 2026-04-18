@@ -33,6 +33,7 @@
     dest: "/tmp/terraform_{{ _terraform_version }}_linux_{{ _base_arch[ansible_facts['architecture']] | default('amd64') }}.zip"
     checksum: "{{ ('sha256:' + terraform_checksum_url) if terraform_checksum_verify else omit }}"
     mode: '0644'
+  check_mode: false
   when: _terraform_version not in ( terraform_installed_version.stdout_lines | default(['empty'], true) | first )
 
 - name: Linux/Unix | Install Terraform
